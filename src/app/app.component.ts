@@ -9,17 +9,15 @@ import { IUser, IUserList } from './models/interfaces';
 })
 export class AppComponent {
   name = 'Angular ' + VERSION.major;
-  //private dataFirstNames: string[];
+  public nomprenom: IUserList = {
+    userList: [],
+  };
 
   constructor() {
     this.generateUsers(15);
   }
 
   private generateUsers(nb: number): IUserList {
-    let nomprenom: IUserList = {
-      userList: [],
-    };
-
     for (let i = 0; i < nb; i++) {
       let randomIndiceFN = Math.round(
         Math.random() * dataFirstNames.length - 1
@@ -28,12 +26,12 @@ export class AppComponent {
         Math.random() * dataFirstNames.length - 1
       );
 
-      nomprenom.userList.push({
+      this.nomprenom.userList.push({
         firstname: dataFirstNames[randomIndiceFN],
         name: dataFirstNames[randomIndiceLN].toUpperCase(),
       });
     }
-    console.log('Generate', nb, 'users: ', nomprenom);
-    return nomprenom;
+    console.log('Generate', nb, 'users: ', this.nomprenom);
+    return this.nomprenom;
   }
 }
