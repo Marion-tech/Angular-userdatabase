@@ -1,4 +1,14 @@
-<div>
+<header>
+  <h2>Users</h2>
+</header>
+
+<div class="container">
+  <div class="card" *ngFor="let user of nomprenom.userList">
+    <div class="fname">{{ user.firstname }}</div>
+    <div class="name">{{ user.name }}</div>
+  </div>
+</div>
+<!-- <div>
   <h2>Le projet de la semaine, ou plus</h2>
   <ul>
     <li>
@@ -104,4 +114,4 @@
       </div>
     </li>
   </ul>
-</div>
+</div> -->

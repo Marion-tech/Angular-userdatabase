@@ -1,3 +1,38 @@
-p {
-  font-family: Lato;
+header {
+  background: linear-gradient(
+    90deg,
+    rgba(184, 252, 243, 1) 0%,
+    rgba(223, 143, 247, 1) 35%,
+    rgba(241, 208, 187, 1) 100%
+  );
+  height: 100px;
+  display: flex;
+}
+
+h2{
+flex: 1;
+text-align: center;
+color:white;
+}
+
+.container{
+  background-color: #eaeaea;
+  height:500px;
+}
+
+.card {
+  background-color: white;
+  height: 200px;
+  width:150px;
+  box-shadow: 1px 1px grey;
+  display: flex;
+  flex-direction: row;
+}
+
+.fname {
+  flex: 1;
+}
+
+.lname {
+  flex: 1;
 }
