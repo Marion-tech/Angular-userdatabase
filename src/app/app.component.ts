@@ -5,7 +5,7 @@ import { IUser, IUserList } from './models/interfaces';
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
   name = 'Angular ' + VERSION.major;
@@ -14,16 +14,16 @@ export class AppComponent {
   };
 
   constructor() {
-    this.generateUsers(15);
+    this.generateUsers(5);
   }
 
-  private generateUsers(nb: number): IUserList {
+  private generateUsers(nb: number): void {
     for (let i = 0; i < nb; i++) {
       let randomIndiceFN = Math.round(
-        Math.random() * dataFirstNames.length - 1
+        Math.random() * (dataFirstNames.length - 1)
       );
       let randomIndiceLN = Math.round(
-        Math.random() * dataFirstNames.length - 1
+        Math.random() * (dataFirstNames.length - 1)
       );
 
       this.nomprenom.userList.push({
@@ -32,6 +32,5 @@ export class AppComponent {
       });
     }
     console.log('Generate', nb, 'users: ', this.nomprenom);
-    return this.nomprenom;
   }
 }
