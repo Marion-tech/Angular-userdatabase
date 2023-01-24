@@ -12,9 +12,11 @@ export class AppComponent {
   public nomprenom: IUserList = {
     userList: [],
   };
+  public homonymelist: string[] = [];
 
   constructor() {
-    this.generateUsers(5);
+    this.generateUsers(25);
+    this.homonyme();
   }
 
   private generateUsers(nb: number): void {
@@ -27,10 +29,21 @@ export class AppComponent {
       );
 
       this.nomprenom.userList.push({
+        id: i + 1,
         firstname: dataFirstNames[randomIndiceFN],
         name: dataFirstNames[randomIndiceLN].toUpperCase(),
       });
     }
     console.log('Generate', nb, 'users: ', this.nomprenom);
+  }
+
+  private homonyme(): void {
+    let concat = this.nomprenom.userList.map((user:IUser) => user.id + ' - '+ user.firstname+user.name).sort((a,b)=> a.firstname > b.firstname ? 1 : -1);
+    console.log('concat', concat);
+
+    //this.homonymelist = concat.filter((name1:string)=> this.homonymelist.includes(name1) )
+    //this.homonymelist = concat.find((name:string)=> concat.find((name2:string)=> name===name2))
+    console.log(this.homonymelist);
+    //return;
   }
 }
