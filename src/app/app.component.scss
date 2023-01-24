@@ -40,18 +40,26 @@ h2 {
     width: 100%;
     flex: 1;
   }
-  .body{
+  .body {
     flex: 3;
-    height:100%;
-    padding-top: 20px;;
+    height: 100%;
+    padding-top: 20px;
 
-    .circle{
-      background-color: grey;
+    .circle {
+      background: linear-gradient(
+        90deg,
+        rgba(184, 252, 243, 1) 0%,
+        rgba(170, 143, 247, 1) 50%,
+        rgba(241, 208, 187, 1) 100%
+      );
       border-radius: 50%;
       display: block;
-      height:90px;
+      height: 90px;
       width: 90px;
       margin: auto;
+    }
   }
-  }
+}
+.homonyme {
+  background-color: red !important;
 }
