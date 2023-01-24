@@ -16,12 +16,12 @@ export class AppComponent {
   public homonymelist: number[] = [];
 
   constructor() {
-    this.generateUsers(20);
+    this.generateUsers(5);
     this.homonyme();
   }
 
-  public checkHomonyme(id) : boolean{
-    return !!this.homonymelist.find((cherche:number)=> id === cherche);
+  public checkHomonyme(id): boolean {
+    return !!this.homonymelist.find((cherche: number) => id === cherche);
   }
 
   private generateUsers(nb: number): void {
@@ -48,29 +48,43 @@ export class AppComponent {
     );
 
     concat.forEach((user: IUser, i) => {
-      
-      if (concat[i+1] && (user.name+user.firstname) === (concat[i+1].name
-        +concat[i + 1].firstname)) {
-          this.homonymelist.push(user.id);
-          this.homonymelist.push(concat[i+1].id);
+      if (
+        concat[i + 1] &&
+        user.name + user.firstname ===
+          concat[i + 1].name + concat[i + 1].firstname
+      ) {
+        this.homonymelist.push(user.id);
+        this.homonymelist.push(concat[i + 1].id);
       }
     });
     console.log(
-      'concat', this.nomprenom.userList.sort((a,b)=> a.id > b.id ? 1 : -1)
+      'concat',
+      this.nomprenom.userList.sort((a, b) => (a.id > b.id ? 1 : -1))
     );
 
     console.log('homonyme', this.homonymelist);
-    //this.homonymelist = concat.filter((name1:string)=> this.homonymelist.includes(name1) )
-    //this.homonymelist = concat.find((name:string)=> concat.find((name2:string)=> name===name2))
+
+    let toto = this.nomprenom.userList.filter((user: IUser) => {
+      return !!this.nomprenom.userList.find((user2: IUser) => {
+        if (
+          user.id !== user2.id &&
+          user.firstname === user2.firstname &&
+          user.name === user2.name
+        ) {
+          return true;
+        } else {
+          return false;
+        }
+      });
+    });
+    console.log(toto);
   }
 
   private training() {
     let example = [1, 2, 3, 3, 4, 4, 5, 8, 9, 9];
     let sansDoublons = [];
-    //example = example.filter((filt:number, i)=> filt[i] === filt[i+1]);
-    //example = example.filter((filt:number, i)=> example.indexOf(filt)===i);
     for (let i = 0; i < example.length - 1; i++) {
-      if (example[i] != example[i + 1]) {
+      if (example[i] !== example[i + 1]) {
         sansDoublons.push(example[i]);
       }
     }
@@ -78,7 +92,7 @@ export class AppComponent {
 
     let newtab = [];
     example.forEach((num, i) => {
-      if (num != example[i + 1]) {
+      if (num !== example[i + 1]) {
         newtab.push(num);
       }
     });
