@@ -86,6 +86,14 @@ export class AppComponent {
     console.log(toto);
   }
 
+  public addAge(id: number): void {
+    this.nomprenom.userList.map((user: IUser) => {
+      if (user.id === id) {
+        user.age = user.age + 1;
+      }
+    });
+  }
+
   private training() {
     let example = [1, 2, 3, 3, 4, 4, 5, 8, 9, 9];
     let sansDoublons = [];
