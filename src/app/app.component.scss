@@ -23,8 +23,8 @@ h2 {
   flex-wrap: wrap;
   gap: 20px;
   justify-content: space-around;
-  padding-top: 20px;
   padding-bottom: 20px;
+  padding-top: 20px;
 }
 
 .card {
@@ -34,16 +34,17 @@ h2 {
   box-shadow: 1px 1px 10px 1px #c2bfbf;
   display: flex;
   flex-direction: column;
+  padding: 10px;
 
   .footer {
     text-align: center;
     width: 100%;
     flex: 1;
+    color: #8f8f8f;
   }
   .body {
     flex: 3;
     height: 100%;
-    padding-top: 20px;
 
     .circle {
       background: linear-gradient(
@@ -57,6 +58,20 @@ h2 {
       height: 90px;
       width: 90px;
       margin: auto;
+    }
+    .genreM {
+      height: 20px;
+      background-image: url('https://www.freeiconspng.com/thumbs/male-icon/male-symbols-icon-7.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: right;
+    }
+    .genreF {
+      height: 20px;
+      background-image: url('https://icons.iconarchive.com/icons/custom-icon-design/flatastic-7/512/Female-icon.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: right;
     }
   }
 }

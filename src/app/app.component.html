@@ -8,8 +8,15 @@
     *ngFor="let user of nomprenom.userList"
     [ngClass]="{ homonyme: checkHomonyme(user.id) }"
   >
-    <div class="body"><div class="circle"></div></div>
-    <div class="footer">{{ user.firstname }} {{ user.name }}</div>
+    <div class="body">
+      <div [ngClass]="{'genreF': user.genre === 'F',
+      'genreM': user.genre === 'M'}"></div>
+      <div class="circle"></div>
+    </div>
+    <div class="footer">
+      {{ user.firstname }} {{ user.name }} 
+      <div>{{user.age}} ans <br/> {{user.weight}} kg</div>
+    </div>
   </div>
 </div>
 

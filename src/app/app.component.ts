@@ -32,11 +32,17 @@ export class AppComponent {
       let randomIndiceLN = Math.round(
         Math.random() * (dataFirstNames.length - 1)
       );
+      let randomIndiceGenre = Math.round(Math.random() * 1);
+      let randomAge = 9 + Math.round(Math.random() * 90);
+      let randomWeight = 30 + Math.round(Math.random() * 180);
 
       this.nomprenom.userList.push({
         id: i + 1,
         firstname: dataFirstNames[randomIndiceFN],
         name: dataFirstNames[randomIndiceLN].toUpperCase(),
+        genre: randomIndiceGenre === 0 ? 'F' : 'M',
+        age: randomAge,
+        weight: randomWeight,
       });
     }
     console.log('Generate', nb, 'users: ', this.nomprenom);
