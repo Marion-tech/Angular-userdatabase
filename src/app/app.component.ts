@@ -87,9 +87,9 @@ export class AppComponent {
   }
 
   public addAge(id: number): void {
-    this.nomprenom.userList.map((user: IUser) => {
+    this.nomprenom.userList.forEach((user: IUser) => {
       if (user.id === id) {
-        user.age = user.age + 1;
+      return  user.age = user.age + 1;
       }
     });
   }
