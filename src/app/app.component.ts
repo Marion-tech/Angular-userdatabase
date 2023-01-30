@@ -23,11 +23,13 @@ export class AppComponent {
     idMale: new FormControl(null, Validators.required),
     idFemale: new FormControl(null, Validators.required),
   });
+  private id: number;
 
   constructor() {
     this.generateUsers(5);
     this.homonyme();
     this.formGroup.statusChanges.subscribe(console.log);
+    this.id = this.nomprenom.userList.length;
   }
 
   public checkHomonyme(id): boolean {
@@ -114,7 +116,7 @@ export class AppComponent {
     console.log('fem', idfemale);
 
     let child = this.nomprenom.userList.push({
-      id: this.nomprenom.userList.length + 1,
+      id: this.id,
       name: this.nomprenom.userList.find((user: IUser) => user.id === +idmale)
         .name,
       firstname: 'Enfant',
@@ -124,7 +126,12 @@ export class AppComponent {
       idmom: idfemale,
       iddad: idmale,
     });
+
+    this.id++;
+
     console.log(
+      'lenght',
+      this.nomprenom.userList.length,
       'mom',
       idfemale + 'dad',
       idmale,
@@ -134,12 +141,12 @@ export class AppComponent {
   }
 
   public death(): void {
-    this.nomprenom.userList.forEach((user: IUser, index) => {
+    this.nomprenom.userList.forEach((user: IUser) => {
       let chance =
         Math.round(Math.random() * (10000 / user.age / user.weight)) === 0;
-      if (chance) {
-        this.nomprenom.userList.splice(index, 1);
-        console.log(user);
+      if (chance && user.death!= true) {
+        user.death = true;
+        console.log('lenght', this.nomprenom.userList.length, 'mort', user);
       }
     });
   }

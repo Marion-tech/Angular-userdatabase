@@ -7,6 +7,7 @@ export interface IUser {
   weight: number;
   idmom?: number;
   iddad?: number;
+  death?: boolean;
 }
 
 export interface IUserList {

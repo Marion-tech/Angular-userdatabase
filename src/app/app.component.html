@@ -31,6 +31,7 @@
     class="card"
     *ngFor="let user of nomprenom.userList"
     [ngClass]="{ homonyme: checkHomonyme(user.id) }"
+    [ngClass]="{death : user.death===true}"
   >
     <div class="body">
       <div
