@@ -2,6 +2,30 @@
   <h2>Users</h2>
 </header>
 
+<div [formGroup]="formGroup">
+  <select formControlName="idFemale">
+    <option value="">Female</option>
+    <ng-container *ngFor="let female of nomprenom.userList">
+      <option [value]="female.id" *ngIf="female.genre === 'F'">
+        {{ female.firstname }} {{ female.name }}
+      </option>
+    </ng-container>
+  </select>
+  ♥
+  <select formControlName="idMale">
+    <option value="">Male</option>
+    <ng-container *ngFor="let male of nomprenom.userList">
+      <option [value]="male.id" *ngIf="male.genre === 'M'">
+        {{ male.firstname }} {{ male.name }}
+      </option>
+    </ng-container>
+  </select>
+  <button (click)="loveMaking()" [disabled]="formGroup.status === 'INVALID'">
+    Lovemaking
+  </button>
+
+  <button (click)="death()">Death</button>
+</div>
 <div class="container">
   <div
     class="card"
@@ -10,9 +34,11 @@
   >
     <div class="body">
       <div
+        class="icon"
         [ngClass]="{ genreF: user.genre === 'F', genreM: user.genre === 'M' }"
       ></div>
       <div class="circle"></div>
+      <div class="icon" [ngClass]="{ child: user.idmom != null }"></div>
     </div>
     <div class="footer">
       {{ user.firstname }} {{ user.name }}

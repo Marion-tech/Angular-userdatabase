@@ -35,7 +35,7 @@ h2 {
   display: flex;
   flex-direction: column;
   padding: 10px;
-  margin-top: 40px;
+  margin-top: 70px;
 
   .footer {
     text-align: center;
@@ -44,6 +44,8 @@ h2 {
     color: #8f8f8f;
   }
   .body {
+    display: flex;
+    flex-direction: row;
     flex: 3;
     height: 100%;
 
@@ -59,7 +61,7 @@ h2 {
       height: 90px;
       width: 90px;
       margin: auto;
-      margin-top: -70px;
+      margin-top: -50px;
     }
     .genreM {
       height: 20px;
@@ -74,6 +76,20 @@ h2 {
       background-size: contain;
       background-repeat: no-repeat;
       background-position: right;
+    }
+    .child {
+      min-width: 20px;
+      height: 20px;
+      background-image: url('https://i.pinimg.com/originals/a9/66/ff/a966ff1edb4027754b154aa634a8cd1e.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: left;
+    }
+
+    .icon {
+      flex: 1;
+      max-width: 20px;
+      min-width: 20px;
     }
   }
 }

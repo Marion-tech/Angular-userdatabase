@@ -1,4 +1,9 @@
 import { Component, VERSION } from '@angular/core';
+import {
+  formControl,
+  forms,
+} from '@angular/core/schematics/migrations/typed-forms/util';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { isFunction } from 'rxjs/internal/util/isFunction';
 import { dataFirstNames } from './models/data.names';
 import { IUser, IUserList } from './models/interfaces';
@@ -14,10 +19,15 @@ export class AppComponent {
     userList: [],
   };
   public homonymelist: number[] = [];
+  public formGroup = new FormGroup({
+    idMale: new FormControl(null, Validators.required),
+    idFemale: new FormControl(null, Validators.required),
+  });
 
   constructor() {
     this.generateUsers(5);
     this.homonyme();
+    this.formGroup.statusChanges.subscribe(console.log);
   }
 
   public checkHomonyme(id): boolean {
@@ -89,7 +99,47 @@ export class AppComponent {
   public addAge(id: number): void {
     this.nomprenom.userList.forEach((user: IUser) => {
       if (user.id === id) {
-      return  user.age = user.age + 1;
+        return (user.age = user.age + 1);
+      }
+    });
+  }
+
+  public loveMaking(): void {
+    //this.nomprenom.userList.filter((user:IUser)=> user.id===idfemale)
+    //this.generateUsers(1)
+    let randomIndiceGenre = Math.round(Math.random() * 1);
+    let randomIndiceWeight = Math.random() * 5;
+    let idmale: number = this.formGroup.get('idMale').value;
+    let idfemale: number = this.formGroup.get('idFemale').value;
+    console.log('fem', idfemale);
+
+    let child = this.nomprenom.userList.push({
+      id: this.nomprenom.userList.length + 1,
+      name: this.nomprenom.userList.find((user: IUser) => user.id === +idmale)
+        .name,
+      firstname: 'Enfant',
+      genre: randomIndiceGenre === 0 ? 'F' : 'M',
+      age: 0,
+      weight: randomIndiceWeight,
+      idmom: idfemale,
+      iddad: idmale,
+    });
+    console.log(
+      'mom',
+      idfemale + 'dad',
+      idmale,
+      'child',
+      this.nomprenom.userList[child - 1]
+    );
+  }
+
+  public death(): void {
+    this.nomprenom.userList.forEach((user: IUser, index) => {
+      let chance =
+        Math.round(Math.random() * (10000 / user.age / user.weight)) === 0;
+      if (chance) {
+        this.nomprenom.userList.splice(index, 1);
+        console.log(user);
       }
     });
   }

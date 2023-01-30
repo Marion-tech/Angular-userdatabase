@@ -5,6 +5,8 @@ export interface IUser {
   genre: string;
   age: number;
   weight: number;
+  idmom?: number;
+  iddad?: number;
 }
 
 export interface IUserList {
